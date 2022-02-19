@@ -13,7 +13,7 @@ export default function Home() {
         <h2>Get to where you're going with your peers.</h2>
         <p>Find people from your organization to rideshare with. You only pay a fraction for gas!</p>
         <button type='button'>
-          <Link href={'/'}>
+          <Link href={'/signup'}>
             <a>Get started</a>
           </Link>
         </button>
