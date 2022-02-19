@@ -1,13 +1,13 @@
 import Link from 'next/link';
+import styles from '../styles/Navbar.module.css';
 
 const Navbar = () => {
     return (
         <nav>
-            <h1>SMARTPOOL</h1>
+            <h1 className={styles.logo}>SMARTPOOL</h1>
             <Link href={'/login'}>
-                <a><h3>Log In</h3></a>
+                <a className={styles.login}><h3>Log In</h3></a>
             </Link>
-            
         </nav>
     );
 }

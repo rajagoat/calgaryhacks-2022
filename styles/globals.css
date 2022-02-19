@@ -4,6 +4,15 @@
   --button-primary: #FFC154;
 }
 
-html, body {
+html, body, body * {
   font-family: 'Open Sans', sans-serif;
+  margin: 0;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 15px 25px;
 }
