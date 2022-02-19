@@ -6,17 +6,19 @@ import Navbar from '../components/Navbar';
 
 export default function Home() {
   return (
-    <div className={styles.landing}>
+    <div>
       <Navbar />
-      <Image src={'/static/driver.gif'} alt='driver' width={400} height={400} />
-      <div>
-        <h2>Get to where you're going with your peers.</h2>
-        <p>Find people from your organization to rideshare with. You only pay a fraction for gas!</p>
-        <button type='button'>
-          <Link href={'/signup'}>
-            <a>Get started</a>
-          </Link>
-        </button>
+      <div className={styles.main}>
+        <Image src={'/static/driver.gif'} alt='driver' width={800} height={800} />
+        <div className={styles.mainInfo}>
+          <h2>Get to where you're going with your peers.</h2>
+          <p>Find people from your organization to rideshare with. You only pay a fraction for gas!</p>
+          <button type='button'>
+            <Link href={'/signup'}>
+              <a>Get started</a>
+            </Link>
+          </button>
+        </div>
       </div>
     </div>
   )
