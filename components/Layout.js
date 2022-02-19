@@ -1,12 +1,9 @@
-import Navbar from "./Navbar";
-import Footer from "./Footer";
+// used to add a navbar and/or footer, or other components if needed
 
 const Layout = ({ children }) => {
     return (
         <div>
-            <Navbar />
             {children}
-            <Footer />
         </div>
     );
 }
