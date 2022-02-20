@@ -59,15 +59,22 @@ export default function UserHome() {
 
 
       {!driverSelected && !passengerSelected ? <div className={styles.actionBox}>
-        <form onSubmit={handleSubmit}>
-          <p>Choose your arrival time:</p>
-          <input type="time" id='appt' name='appt' required/>
-          <p>Choose your role:</p>
+        <form className={styles.center} onSubmit={handleSubmit}>
+          <h3>Choose your arrival time:</h3>
+          <input className={styles.actionQuestion} type="time" id='appt' name='appt' required/>
+
+          <h3>Choose your role:</h3>
+          <div className={styles.actionSelect} >
           <input type="radio" id='driver' name='role' value={'Driver'} required/>
-          <label htmlFor="driver">Driver</label>
+          <label htmlFor="driver"> Driver</label>
+          </div>
+
+          <div className={styles.actionSelect} >
           <input type="radio" id='passenger' name='role' value={'Passenger'} required/>
-          <label htmlFor="passenger">Passenger</label>
-          <input type="submit" value={'Submit'}/>
+          <label htmlFor="passenger"> Passenger</label>
+          </div>
+
+          <input className={styles.submit} type="submit" value={'Submit'}/>
         </form>
       </div> : <div className={styles.actionBox}>
         {driverSelected && passengerWaiting ? <Looking userInfo={'passengers'}/> : <Looking userInfo={'a driver'}/>}
