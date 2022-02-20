@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "calgaryhack2022",
+  "private_key_id": "36518d7424eaa450c324deff5e4354fed7af12cc",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDAWryQun8GhrWp\nliP2kx246sh86qihnLVJEd9LELPDSGDQucPHbhZDDn4qVtU8panKJeoEzYPYtFiG\nAe8H0Jaa/ZATeVOqps+ih7jZnJbCKT0+ntHqh8RkqSD8D2VLBEoVupsNM+n44Yjk\nhB0euev7X+yKvzUhx+/AJyQ4ErTugIKt7JD0ksQ0elsjHXMLLqeiS9remCUvI+hC\n/2UwfoqPP8I1kLMZZQjupXcRiTCSHK8fhLxbHR6cUD58guyMcxD6+esrndr+nvld\nfXl42KnDQjEvE8ncAknMb+/L+ORA4Hh748SKGq7pdWl+R8JK+09R5aHxBC9+66/M\nw1FhK6yrAgMBAAECggEAUQ6rgY2lc7mWmfU0CHcsQj1l6QX1s8zWtAj9AKP0LKm2\nap6ter/QT8eusObQivMAnrflasqz8cDlwOrVsIRcwslxSlOJR1NuEf6BjeonuYAp\nV9cTfHJj90syJCXUuI0BLzDon+KtiPx5dFqb7tPINrDQfBNhL3ASfvW/lIWFiy8P\nGtvQAMXQCWpxiirIbrZz6aSB4ToTtnPrhxw5TrbD4q84/DyRgPY/EgJx7k/huR+c\n/4CoDikewdHBMb2uw4ydqLAUAgWvDXO7+VQl8xqe0ZzScEy2rNr0Urx+WMh3mnUl\neXzLkrGNptO5BznMi/FxbyUpMVymXmvvGG89xAih2QKBgQDp0Vc3LFHFNrKMgmya\njshD7bwGaNJuKFSYq8tyxnd49pHozxHYO3FKRvc+F0/ijddDPYkYE0G7HFgc48ic\noH+kUNlpxtxObcoZ08Mf5bh1LxGJy5pYZpVxzLft9TYZ2pmLaN4noTiDzO26BpbM\nN/xi6SI/qmD0WSAXR79wUJXivwKBgQDSmmO7RmgDiAYNoxtw67hkbW6QyOcpEPRH\nSOUrZ5ILB4GNd+h3bTBqESoX7vHFQI7RQS0eMmVnwVWIOcCHBxIDLE/6aHBfwUbW\n8cdVh+K9MV6fINCdgLgTGIasXsH4p+F2CWzitKXWmxNq4cGX1QAdookTG7YY56YT\nor1kD5utFQKBgCMd+N5lfqaDD5AA6rTP6w4gv5Oq3KgE0KfZbYYAfuMhDUsNBp4W\nV26TeADQWYQqT4Fe1Z9TDRVALY+xOmkjxef06KJ1ZpM09Byq7Gx3ARxAhH7QoI7U\nYW+lEp7frE93wIXqqysCkM1i0vWUlcN4SSTF5Qnw2fz5AdPdR8hjog9bAoGAG4yg\nsTXTk2quyAfnJg1f0JtUFFKDkqaqHc0WVWg1/YVc2CGwYjcBV06pf/n83H3GcO8i\ntMmI5FqxEqHjYoZ1P78DM1GIKa6B0spL9g9RhMg5hX1obMIS0kSqEVBP9XQYlTVE\nbh+NdhZRIvEnPvJZEodZgQtl9boPyo/GUJmOFsUCgYEAlcVTN9vQanfefnx+bZZI\nedL06qMwQoshJkEkfcMdAFlVj08K/0TjdhA7z5FXmh48ZDY8MP0UmptOCpTGxXj8\n+QjpDtwN6jtXkfWOfC2NYXaYdKCieYQ6wT2qQRRNmiENnxfA/qTwr5Toj5ytpItU\nX+/T6O58w0BPLFvOaDfrmgU=\n-----END PRIVATE KEY-----\n",
+  "client_email": "calgaryhack2022@appspot.gserviceaccount.com",
+  "client_id": "107326309251022284820",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/calgaryhack2022%40appspot.gserviceaccount.com"
+}
