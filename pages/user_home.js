@@ -39,7 +39,15 @@ export default function UserHome() {
         <title>Start</title>
       </Head>
 
-      <div style={{ zIndex: "0", backgroundColor:"yellow" }}>
+      <div style={{ zIndex: "0", backgroundColor:"grey" }}>
+
+        <div className={styles.profile}>
+          <a href="/user_home">
+            <b>
+            Go back
+            </b>
+          </a>
+        </div>
 
         
         <iframe

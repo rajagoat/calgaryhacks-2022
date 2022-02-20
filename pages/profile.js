@@ -42,7 +42,7 @@ export default function Profile() {
         <title>Profile</title>
       </Head>
 
-      <h1 style={{margin:"20px"}}>SMARTPOOL</h1>
+      <a style={{textDecoration:"none", color:"black"}}href="/user_home"><h1 style={{margin:"20px"}}>SMARTPOOL</h1></a>
 
       <div className={styles.profileCard} >
         <div className={styles.imageContainer}>
@@ -57,6 +57,13 @@ export default function Profile() {
           <br/>
 
           <h4>Position @ Organization</h4>
+          <div className={styles.back}>
+          <a href="/profile">
+            <b>
+            View Profile
+            </b>
+          </a>
+        </div>
         </div>
         
       </div>
