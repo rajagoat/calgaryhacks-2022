@@ -5,6 +5,10 @@ import styles from '../styles/CSetup.module.css'
 
 import { useEffect, useState } from 'react';
 import uploadcare from 'uploadcare-widget';
+var db = require('./db_connection_modules.js');
+db.initialize_dbconnection();
+
+//db.add_user('Nuha', 'Shaikh', 'she/her', 1, 30087631, '614b 17 Ave SW, Calgary, AB T2S 0B4', 'nuha.shaikh1@ucalgary.ca', '403-455-9917', 'password1234');
 
 export default function CompleteSetup() {
 
