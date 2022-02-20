@@ -7,3 +7,12 @@
 html, body {
   font-family: 'Open Sans', sans-serif;
 }
+
+.center {
+  width: 100vw;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+
+}
