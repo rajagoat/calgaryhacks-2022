@@ -19,7 +19,7 @@
 }
 
 .actionOption{
-    height: 15%;
+    height: 10%;
     width: 90%;
     margin: 12px;
 
@@ -37,5 +37,16 @@
 
 .actionOption:hover {
     transform: translate(0, -2px);
-  }
+}
+
+.actionQuestion {
+    height: 10%;
+    width: 80%;
+
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 6px;
+
+    transition: all .1s ease-in-out;
+}
   
