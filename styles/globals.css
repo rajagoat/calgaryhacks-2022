@@ -26,3 +26,26 @@ nav {
   align-items: center;
 
 }
+
+.ml-auto {
+  position: relative;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-size: 20px;
+}
+
+.ml-auto::after {
+  content: "";
+  position: absolute;
+  background-color: var(--button-primary);
+  height: 3px;
+  width: 0;
+  left: 0;
+  bottom: -10px;
+  transition: 0.3s;
+}
+
+.ml-auto:hover::after {
+  width: 100%;
+}
