@@ -13,7 +13,7 @@ const purchaseItem = new Map([
     [1, {price: 500, name: "Carpool bill"}]
 ]);
 
-app.post('/create-checkout-ssession', async (req, res) => {
+app.post('/create-checkout-session', async (req, res) => {
 
     try {
         const session = await stripe.checkout.sessions.create({
