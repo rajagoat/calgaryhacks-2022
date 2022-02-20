@@ -1,10 +1,11 @@
 import Image from 'next/image';
+import styles from '../styles/Looking.module.css';
 
 const Looking = ({ userInfo }) => {
     return (
         <>
-            <Image src={'/static/magnifying-glass.svg'} height={50} width={50}/>
-            <h3>Looking for {userInfo}...</h3>
+            <Image src={'/static/magnifying-glass.svg'} height={140} width={140}/>
+            <h3 className={styles.lookingInfo}>Looking for {userInfo}...</h3>
         </>
     );
 }

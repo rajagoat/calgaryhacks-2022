@@ -42,8 +42,8 @@ export default function UserHome() {
         <h2>Choose your role.</h2>
         <div className={styles.actionOption} style={{ backgroundColor: "#FFC154" }} onClick={handleDriver}><h3>Driver</h3></div>
         <div className={styles.actionOption} style={{ backgroundColor: "#FF9345" }} onClick={handlePassenger}><h3>Passenger</h3></div>
-      </div> : <div className={styles.actionBox}> 
-        <Looking />
+      </div> : <div className={styles.actionBox}>
+        {driverSelected ? <Looking userInfo={'passengers'}/> : <Looking userInfo={'a suitable driver'}/>}
       </div>}
     </div>
   )
