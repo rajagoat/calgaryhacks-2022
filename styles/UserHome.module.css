@@ -8,7 +8,6 @@
   background-color: white;
   transform: translate(-50%,-50%);
   -ms-transform: translate(-50%,-50%);
-
   border-radius: 12px;
 
   display: flex;
@@ -18,25 +17,10 @@
 
 }
 
-.actionOption{
-    height: 10%;
+.actionBox h3 {
+    font-size: 25px;
     width: 90%;
-    margin: 12px;
-
-    display: flex;
-    flex-flow: column wrap;
-    justify-content: center;
-    align-items: center;
-
-    border-radius: 12px;
-
-    color:white;
-
-    transition: all .1s ease-in-out;
-}
-
-.actionOption:hover {
-    transform: translate(0, -2px);
+    margin-bottom: 7px;
 }
 
 .actionQuestion {
@@ -50,6 +34,7 @@
     transition: all .1s ease-in-out;
 
     margin-top: 12px;
+    margin-bottom: 70px;
 }
 
 .actionSelect {
@@ -100,5 +85,5 @@
 
 .submit:hover{
     transform: translate(0, -2px);
+    cursor: pointer;
 }
-  

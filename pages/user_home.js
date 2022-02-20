@@ -62,10 +62,6 @@ export default function UserHome() {
         <form className={styles.center} onSubmit={handleSubmit}>
           <h3>Choose your arrival time:</h3>
           <input className={styles.actionQuestion} type="time" id='appt' name='appt' required/>
-          <br />
-          <br />
-
-          <br />
 
           <h3>Choose your role:</h3>
           <div className={styles.actionSelect} >
