@@ -248,7 +248,6 @@ get_journey_requests: async function(){
         return;
     }  
     snapshot.forEach(doc => {
-        console.log('hey lololol');
         journeys.push(doc.data());
     });
     // snapshot.forEach((doc) => {
