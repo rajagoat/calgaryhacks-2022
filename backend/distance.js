@@ -1,64 +1,120 @@
-const org1 = {
-  org_id:1, 
-  org_name:"University of Calgary", 
-  org_addr:"2500 University Dr NW, Calgary, AB T2N 1N4"
-};
+var db = require('./db_connection_modules.js');
 
-const user1 = {
-  user_id: 1, 
-  firstName:"John", 
-  lastName:"Doe", 
-  org_id:1, 
-  userid:30087827, 
-  home_addr: "1239 Strathcona Dr SW, Calgary, AB T3H 3S1",
-  email:"john.doe@ucalgary.ca", 
-  phone:"403-555-1234", 
-  password:"password" 
-};
+db.initialize_dbconnection();
 
-const user2 = {
-  user_id: 2, 
-  firstName:"Huda", 
-  lastName:"Abbas", 
-  org_id:1, 
-  userid:123456, 
-  home_addr:"4604 80 St NW, Calgary, AB T3B 2P3", 
-  email:"huda.abbas@ucalgary.ca", 
-  phone:"403-555-1234", 
-  password:"password" 
-};
+//set_up();
 
-const user3 = {
-  user_id: 3, 
-  firstName:"Nuha", 
-  lastName:"Shaikh", 
-  org_id:1, 
-  userid:30087827, 
-  home_addr:"80 Strathridge Crescent SW, Calgary, AB T3H 3R9", 
-  email:"nuha.shaikh@ucalgary.ca", 
-  phone:"403-555-1234", 
-  password:"password" 
-};
+function set_up(){
+  /*const org1 = {
+    org_id:1, 
+    org_name:"University of Calgary", 
+    org_addr:"2500 University Dr NW, Calgary, AB T2N 1N4"
+  };*/
+  db.add_organization(1, 'University of Calgary', '2500 University Dr NW, Calgary, AB T2N 1N4');
 
-const journeyRequest1 = {
-  user_id: 3,
-  user_type: "Driver",
-  vehicle_size: 4,
-  arrival_time: "February 20, 2022 8:50:00",
-};
+  /*const user1 = {
+    user_id: 1, 
+    firstName:"John", 
+    lastName:"Doe", 
+    org_id:1, 
+    userid:30087827, 
+    home_addr: "1239 Strathcona Dr SW, Calgary, AB T3H 3S1",
+    email:"john.doe@ucalgary.ca", 
+    phone:"403-555-1234", 
+    password:"password" 
+  };*/
+  db.add_user('John', 'Doe', 'he/him', 1, 30087827, '1239 Strathcona Dr SW, Calgary, AB T3H 3S1', 'john.doe@ucalgary.ca', '403-555-1234', 'password');
 
-const journeyRequest2 = {
-  user_id: 2,
-  user_type: "Rider",
-  arrival_time: "February 20, 2022 8:52:00",
-};
+  /*const user2 = {
+    user_id: 2, 
+    firstName:"Huda", 
+    lastName:"Abbas", 
+    org_id:1, 
+    userid:123456, 
+    home_addr:"4604 80 St NW, Calgary, AB T3B 2P3", 
+    email:"huda.abbas@ucalgary.ca", 
+    phone:"403-555-1234", 
+    password:"password" 
+  };*/
+  db.add_user('Huda', 'Abbas', 'she/her', 1, 123456, '4604 80 St NW, Calgary, AB T3B 2P3', 'huda.abbas@ucalgary.ca', '403-555-1234', 'password');
 
-const journeyRequest3 = {
-  user_id: 1,
-  user_type: "Rider",
-  arrival_time: "February 20, 2022 9:00:00",
-};
+  /*const user3 = {
+    user_id: 3, 
+    firstName:"Nuha", 
+    lastName:"Shaikh", 
+    org_id:1, 
+    userid:30087827, 
+    home_addr:"614b 17 Ave SW, Calgary, AB T2S 0B4", 
+    email:"nuha.shaikh@ucalgary.ca", 
+    phone:"403-555-1234", 
+    password:"password" 
+  };*/
+  db.add_user('Nuha', 'Shaikh', 'she/her', 1, 30087631, '614b 17 Ave SW, Calgary, AB T2S 0B4', 'nuha.shaikh1@ucalgary.ca', '403-455-9917', 'password1234');
 
+  /*const user3 = {
+    user_id: 3, 
+    firstName:"Lubaba", 
+    lastName:"Sheikh", 
+    org_id:1, 
+    userid:150160, 
+    home_addr:"80 Strathridge Crescent SW, Calgary, AB T3H 3R9", 
+    email:"nuha.shaikh@ucalgary.ca", 
+    phone:"403-555-1234", 
+    password:"password" 
+  };*/
+  db.add_user('Lubaba', 'Sheikh', 'she/her', 1, 150160, '80 Strathridge Crescent SW, Calgary, AB T3H 3R9', 'lubaba.sheikh@ucalgary.ca', '403-455-9917', 'password1234');
+
+  /*const journeyRequest1 = {
+    user_id: 150160,
+    user_type: "Driver",
+    vehicle_size: 4,
+    arrival_time: "February 20, 2022 8:50:00",
+  };*/
+  db.add_journey_request_driver(150160, 'Driver', 4,'February 20, 2022 8:50:00');
+
+  /*const journeyRequest2 = {
+    user_id: 30087631,
+    user_type: "Rider",
+    arrival_time: "February 20, 2022 8:52:00",
+  };*/
+  db.add_journey_request_passenger(30087631, 'Passenger', 'February 20, 2022 8:52:00');
+
+  /*const journeyRequest3 = {
+    user_id: 30087827,
+    user_type: "Rider",
+    arrival_time: "February 20, 2022 9:00:00",
+  };*/
+  db.add_journey_request_passenger(30087827, 'Passenger', 'February 20, 2022 9:00:00');
+
+  /*const journeyRequest3 = {
+    user_id: 123456,
+    user_type: "Rider",
+    arrival_time: "February 20, 2022 9:01:00",
+  };*/
+  db.add_journey_request_passenger(123456, 'Passenger', 'February 20, 2022 9:01:00');
+}
+
+let calling_get_user_addr = function(ucid) {
+  return db.get_user_addr(ucid).then(token => { return token } )
+}
+
+let calling_delete_journey_request = function(ucid) {
+  return db.delete_journey_request(ucid).then(token => { return token } )
+}
+
+let calling_get_user = function(ucid) {
+  return db.get_user(ucid).then(token => { return token } )
+}
+
+let calling_getorgaddr = function(org_id) {
+  return db.get_org_addr(org_id).then(token => { return token } )
+}
+
+let calling_get_journeys = function(org_id) {
+  return db.get_journey_requests().then(token => { return token } )
+}
+
+//carpoolTrip template
 const carpoolTrip = {
   trip_id: 1,
   travel_time: 0,
@@ -70,9 +126,10 @@ const carpoolTrip = {
   riders: [] 
 };
 
+//db.print_users();
+//db.print_organizations();
+
 var axios = require('axios');
-var users = [journeyRequest1, journeyRequest2, journeyRequest3];
-var allUsers = [user1, user2, user3];
 
 algorithm();
 
@@ -117,51 +174,49 @@ async function algorithm() {
   var driver;
   var vehicle_size;
 
-  for(var i = 0; i < users.length; i++) { // for each user
-    if(users[i].user_type == "Driver") { // if the user is a driver
-      carpoolTrip.driver_id = users[i].user_id;
-      vehicle_size = users[i].vehicle_size;
-      driver_arrival_time = users[i].arrival_time;
+  var journey_requests = await calling_get_journeys();
+  //console.log("All journeys: ", journey_requests);
+
+  for(var i = 0; i < journey_requests.length; i++) { // for each journery request
+    if(journey_requests[i].user_type == "Driver") { // if the user is a driver
+      carpoolTrip.driver_id = journey_requests[i].ucid;
+      vehicle_size = journey_requests[i].no_passengers;
+      driver_arrival_time = journey_requests[i].arrival_time;
+      console.log("Driver: ", carpoolTrip.driver_id + "  with vehicle size " + vehicle_size + " and driver arrival time of " + driver_arrival_time);
     }
   }
 
   //selecting all riders in the journey
-  for(var i = 0; i < users.length; i++) { // for each journey request
+  for(var i = 0; i < journey_requests.length; i++) { // for each journey request
     if(carpoolTrip.driver_id != 0) { // if the driver has been assigned
-      for(var j = 0; j < allUsers.length; j++) { // for each user
-        if(allUsers[j].user_id == carpoolTrip.driver_id) { // find the driver
-          driver = allUsers[j];
-        }
-      }
-      if(users[i].user_type == "Rider") { // if the user is a rider
-        //if(user1.org_id == org1.org_id) { // if the user is in the same org as the driver
-        console.log("The driver is: " + driver.firstName);
+      driver = await calling_get_user(carpoolTrip.driver_id);
+      if( journey_requests[i].user_type == "Passenger") { // if the user is a rider
+        console.log("Checking this rider " + journey_requests[i].ucid);
+        console.log("where the driver is: " + driver.first + " " + driver.last);  // print the driver's name
         let arrival_time_1 = new Date(driver_arrival_time).getTime()/1000; // convert ms to seconds
-        let arrival_time_2 = new Date(users[i].arrival_time).getTime()/1000;
+        let arrival_time_2 = new Date(journey_requests[i].arrival_time).getTime()/1000;
         let time_difference = Math.abs(arrival_time_2 - arrival_time_1);
         console.log("The arrival times are: " + time_difference/60 + " minutes apart");
-        if( time_difference <= 600) { //arriving within 10 minutes (600 seconds)
-          for(var j = 0; j < allUsers.length; j++) { // for each user
-            if(users[i].user_id == allUsers[j].user_id) { // if the user is the same as the user we are looking at
-              var time_from_driver_to_user = await duration(allUsers[j].home_addr, driver.home_addr);
-              if(time_from_driver_to_user < 5){ // 5 minutes
-                if(carpoolTrip.no_passengers < vehicle_size) { // if there is room for the rider
-                  carpoolTrip.no_passengers++;
-                  carpoolTrip.riders.push(allUsers[j]); //add the passenger to the carpool
-                  console.log("The rider being added is: " + allUsers[j].firstName + " " + allUsers[j].lastName);
-                } else{
-                  console.log("Sorry.. No drivers available");
-                  //go back and look for new driver?
-                  break;
-                }
-                destination = users[i].home_addr;
-                break;
-              } 
-            }  
-          }
-        }
+        if(time_difference <= 600) { //arriving within 10 minutes (600 seconds)
+          let user = await calling_get_user(journey_requests[i].ucid); // for each user (find the address for the user is the same as the user we are looking at)
+          var time_from_driver_to_user = await duration(user.home_addr, driver.home_addr);
+          if(time_from_driver_to_user < 5){ // 5 minutes
+            if(carpoolTrip.no_passengers < vehicle_size) { // if there is room for the rider
+              carpoolTrip.no_passengers++;
+              carpoolTrip.riders.push(user.ucid); //add the passenger to the carpool
+              console.log("The rider being added is: " + user.first + " " + user.last);
+            } else{
+              console.log("Sorry.. no more space available for this trip");
+              //go back and look for new driver?
+              break;
+            }
+          } else {
+            console.log("Sorry.. no drivers in your area are available");
+          }   
+        } else {
+          console.log("Sorry.. no drivers leaving within 10 minutes of your arrival time for: " + journey_requests[i].ucid);
+        } 
       }
-   
     } else{
       console.log("Sorry...No drivers available");
     }
@@ -172,26 +227,30 @@ async function algorithm() {
   var total_distance = 0; //in km
 
   for(var i = carpoolTrip.riders.length - 1; i >= 0 ; i--) { // for each rider, set pickup time
-    console.log("Rider # " + carpoolTrip.riders.length);
+    console.log("Rider # " + carpoolTrip.riders[i]);
     var time = 0;
+    let rider_addr = await calling_get_user_addr(carpoolTrip.riders[i]);
     if(i == carpoolTrip.riders.length - 1 ) { //last ride
-      let destination = org1.org_addr;
-      time = await duration(carpoolTrip.riders[i].home_addr, destination); //time from last rider to destination
-      total_distance += await distance(carpoolTrip.riders[i].home_addr, destination); //distance from last rider to destination
+      let destination = await calling_getorgaddr(driver.org_id);
+      console.log("The destination for the organization is: " + destination);
+      time = await duration(rider_addr, destination); //time from last rider to destination
+      total_distance += await distance(rider_addr, destination); //distance from last rider to destination
     } else{
-      time = await duration(carpoolTrip.riders[i].home_addr,  carpoolTrip.riders[i+1].home_addr);
-      total_distance += await distance(carpoolTrip.riders[i].home_addr,  carpoolTrip.riders[i+1].home_addr); //distance from last rider to destination
+      let next_rider_addr = await calling_get_user_addr(carpoolTrip.riders[i+1])
+      time = await duration(rider_addr,  next_rider_addr);
+      total_distance += await distance(rider_addr, next_rider_addr); //distance from last rider to destination
     }
     let arrival_date = new Date(driver_arrival_time);
     console.log("The arrival date is: " + arrival_date);
     carpoolTrip.passeneger_pickup_times[i] = new Date(arrival_date.getTime() - time*60000); //set pickup time
-    console.log("For rider " + carpoolTrip.riders[i].firstName + " " + carpoolTrip.riders[i].lastName + " the pickup time is: " + carpoolTrip.passeneger_pickup_times[i]);
+    console.log("For rider " + carpoolTrip.riders[i] + " the pickup time is: " + carpoolTrip.passeneger_pickup_times[i]);
     total_time += time;
   }
 
   if(carpoolTrip.no_passengers != 0) { // if there are no riders
-    var time = await duration(driver.home_addr, carpoolTrip.riders[0].home_addr);
-    total_distance += await distance(driver.home_addr, carpoolTrip.riders[0].home_addr);
+    let rider_addr = await calling_get_user_addr(carpoolTrip.riders[0]);
+    var time = await duration(driver.home_addr, rider_addr);
+    total_distance += await distance(driver.home_addr, rider_addr);
     carpoolTrip.departure_time = new Date(carpoolTrip.passeneger_pickup_times[0]  - time*60000); //time from driver to first rider
     total_time += time;
 
@@ -201,6 +260,13 @@ async function algorithm() {
     console.log("Departure time for driver: " + carpoolTrip.departure_time);
     carpoolTrip.cost_per_rider = total_distance * gas_cost / carpoolTrip.no_passengers;
     console.log("Cost per rider: " + carpoolTrip.cost_per_rider);
+    console.log(carpoolTrip)
+    db.add_carpool_trip(carpoolTrip.travel_time, carpoolTrip.driver_id, carpoolTrip.departure_time, carpoolTrip.passeneger_pickup_times, carpoolTrip.cost_per_rider, carpoolTrip.no_passengers, carpoolTrip.riders);
+    //delete all journey requests fulfilled
+    db.calling_delete_journey_request(carpoolTrip.driver_id);
+    for(var l = carpoolTrip.riders.length; l < 0 ; l++) {
+      db.calling_delete_journey_request(carpoolTrip.riders[l]); 
+    }
   } else{
     console.log("Sorry...No ride available. All drivers are too far away");
   }
