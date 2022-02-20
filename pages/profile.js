@@ -58,9 +58,9 @@ export default function Profile() {
 
           <h4>Position @ Organization</h4>
           <div className={styles.back}>
-          <a href="/profile">
+          <a href="/user_home">
             <b>
-            View Profile
+            Go back
             </b>
           </a>
         </div>
