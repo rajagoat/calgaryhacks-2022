@@ -1,4 +1,4 @@
-var tools = require('./test_file.js');
+var tools = require('./db_connection_modules.js');
 console.log(typeof tools.initialize_dbconnection); // => 'function'
 
 tools.initialize_dbconnection();
