@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { useState, useEffect } from 'react';
 
 import styles from '../styles/Profile.module.css'
-
+import uploadcare from 'uploadcare-widget'
 
 export default function Profile() {
 
@@ -34,7 +34,6 @@ export default function Profile() {
   //     return () => window.removeEventListener("resize", handleResize);
   //   }
   // }, []); // Empty array ensures that effect is only run on mount
-
 
   return (
 
