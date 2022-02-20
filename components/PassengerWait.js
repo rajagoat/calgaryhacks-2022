@@ -3,6 +3,8 @@ import styles from '../styles/PassengerWait.module.css';
 
 const PassengerWait = () => {
 
+    const appUser;
+
     const driverName = "Noel Thomas";
     const driverImage = "https://ucarecdn.com/d0cfd8a6-ae78-42c3-97d0-ad3f1b49174b/noel.png";
     const driverPronouns = "He/Him";
