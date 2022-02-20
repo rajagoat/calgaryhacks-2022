@@ -5,6 +5,7 @@ function handleLogin(instance) {
     instance.loginRedirect(loginRequest).catch(e => {
         console.error(e);
     });
+    var tools = require('\backend\db_connection_modules.js');
 }
 
 /**

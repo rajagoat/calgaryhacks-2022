@@ -6,6 +6,7 @@ import styles from '../styles/Profile.module.css'
 import uploadcare from 'uploadcare-widget'
 
 export default function Profile() {
+  
   var file_src = "d0cfd8a6-ae78-42c3-97d0-ad3f1b49174b/noel.png";
   var name = "Noel Thomas";
   var pronouns = "He/Him";

@@ -6,6 +6,9 @@ import { useState } from 'react';
 import Looking from '../components/Looking';
 import dynamic from 'next/dynamic';
 import RideComplete from '../components/RideComplete';
+var db = require('./db_connection_modules.js');
+db.initialize_dbconnection();
+
 
 const PassengerWait = dynamic(() => import('../components/PassengerWait'));
 
@@ -24,10 +27,13 @@ export default function UserHome() {
   const handleSubmit = (e) => {
     e.preventDefault(); //prevents page refresh
     let time = e.target[0].value;
+    let ucid = "123456"
     let driverValue = e.target[1].checked;
     if (driverValue) {
       setDriverSelected(true);
+      db.add_journey_request_driver(ucid, 'Driver', 4, time);
     } else {
+      db.add_journey_request_passenger(ucid, 'Passenger', time);
       setPassengerSelected(true);
     }
     // Use a backend function here to send the time and passenger value to the DB
@@ -61,7 +67,6 @@ export default function UserHome() {
 
       {!driverSelected && !passengerSelected ? <div className={styles.actionBox}>
         <form className={styles.center} onSubmit={handleSubmit}>
-          <RideComplete/>
           <h3>Choose your arrival time:</h3>
           <input className={styles.actionQuestion} type="time" id='appt' name='appt' required/>
 
