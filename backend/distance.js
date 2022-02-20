@@ -147,7 +147,7 @@ async function algorithm() {
       }
    
     } else{
-      console.log("Sorry.. No drivers available");
+      console.log("Sorry...No drivers available");
     }
   }
 
