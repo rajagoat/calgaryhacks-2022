@@ -1,10 +1,18 @@
 require('dotenv').config();
 
 const express = require('express');
-const app = express();
 
+const cors = require('cors');
+
+
+const app = express();
+app.use(
+    cors({
+        origin: "http://localhost:3001",
+    })
+)
 app.use(express.json());
-app.use(express.static("client"));
+
 app.listen(3000);
 
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
