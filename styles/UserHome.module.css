@@ -49,4 +49,18 @@
 
     transition: all .1s ease-in-out;
 }
+
+.profile{
+    background-color: white;
+    position: fixed;
+    right:30px;
+    top: 30px;
+    padding: 12px;
+    border-radius: 6px;
+}
+
+.profile > a {
+    text-decoration: none;
+    color: black;
+}
   
