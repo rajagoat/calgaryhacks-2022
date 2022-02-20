@@ -1,7 +1,36 @@
 import Image from 'next/image';
 import styles from '../styles/PassengerWait.module.css';
 
+import { useEffect } from 'react';
+
 const PassengerWait = () => {
+
+    const handleTransaction = () => {
+        fetch('http://localhost:3000/create-checkout-session', {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                items: [
+                    {id: 1, quantity: 1}
+                ]
+            })
+        }).then(res => {
+            if (res.ok) return res.json()
+            return res.json().then(json => Promise.reject(json))
+        }). then(({url}) => {
+            window.location = url
+            console.log(url)
+        }).catch(e => {
+            console.error(e.error)
+        })
+    }
+
+    const userID = "123456";
+
+    var tools = require('\backend\db_connection_modules.js');
+
 
     const driverName = "Noel Thomas";
     const driverImage = "https://ucarecdn.com/d0cfd8a6-ae78-42c3-97d0-ad3f1b49174b/noel.png";

@@ -6,11 +6,9 @@ SmartPool is a mobile-friendly web application that enables University of Calgar
 
 The technologies we used for the Front-end: Next.js and for the Back-end: Node.js and Express.js.
 
-This application was created during the 24-hour Calgary-Hacks hackathon 
+This application was created during the 24-hour Calgary-Hacks 2022 hackathon.  
 
-
-
-
+## How to Install and Run the Project
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
@@ -46,3 +44,5 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## deploy 

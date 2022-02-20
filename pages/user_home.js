@@ -9,6 +9,7 @@ import RideComplete from '../components/RideComplete';
 var db = require('./db_connection_modules.js');
 db.initialize_dbconnection();
 
+
 const PassengerWait = dynamic(() => import('../components/PassengerWait'));
 
 export default function UserHome() {
@@ -66,7 +67,6 @@ export default function UserHome() {
 
       {!driverSelected && !passengerSelected ? <div className={styles.actionBox}>
         <form className={styles.center} onSubmit={handleSubmit}>
-          <RideComplete/>
           <h3>Choose your arrival time:</h3>
           <input className={styles.actionQuestion} type="time" id='appt' name='appt' required/>
 
