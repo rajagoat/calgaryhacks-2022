@@ -5,8 +5,6 @@ import styles from '../styles/CSetup.module.css'
 
 import { useEffect, useState } from 'react';
 import uploadcare from 'uploadcare-widget';
-//var db = require('../backend/db_connection_modules.js');
-//db.initialize_dbconnection();
 
 export default function CompleteSetup() {
 
