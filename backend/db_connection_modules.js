@@ -107,8 +107,9 @@ add_user: function (first, last, pronouns, org_id, ucid, home_addr, email, phone
 //     });
 // }
 
-get_user: async function(ucid){
-    var journeys= [];
+get_user: async function(ucid)
+{
+    var users= [];
     const journye_requests = db.collection('users');
     const snapshot = await journye_requests.where('ucid', '==', ucid).get();
     if (snapshot.empty) {
@@ -117,9 +118,9 @@ get_user: async function(ucid){
     }  
     snapshot.forEach(doc => {
         console.log('hey lololol');
-        journeys.push(doc.data());
+        users.push(doc.data());
     });
-    return journeys[0];
+    return users[0];
 },
 
 get_user_addr: async function(ucid) {//*****user id should be set *******
