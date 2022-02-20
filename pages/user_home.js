@@ -5,6 +5,7 @@ import styles from '../styles/UserHome.module.css'
 import { useState } from 'react';
 import PassengerWait from "../components/PassengerWait";
 import Looking from '../components/Looking';
+import DriverPassengerView from '../components/DriverPassengerView';
 
 export default function UserHome() {
   const [driverSelected, setDriverSelected] = useState(false);
@@ -43,7 +44,8 @@ export default function UserHome() {
         <div className={styles.actionOption} style={{ backgroundColor: "#FFC154" }} onClick={handleDriver}><h3>Driver</h3></div>
         <div className={styles.actionOption} style={{ backgroundColor: "#FF9345" }} onClick={handlePassenger}><h3>Passenger</h3></div>
       </div> : <div className={styles.actionBox}>
-        {driverSelected ? <Looking userInfo={'passengers'}/> : <Looking userInfo={'a suitable driver'}/>}
+        {/* <{driverSelected ? <Looking userInfo={'passengers'}/> : <Looking userInfo={'a suitable driver'}/>>} */}
+        <DriverPassengerView />
       </div>}
     </div>
   )
