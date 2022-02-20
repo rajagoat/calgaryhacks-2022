@@ -21,7 +21,8 @@ export default function UserHome() {
   const mapUrl = `https://www.google.com/maps/embed/v1/directions?key=AIzaSyBnVKDuctU6vqxXII877bb_k-rEeF4DlvE&origin=${src}&destination=${dest}&avoid=tolls|highways&zoom=12`
 
   const handleArrival = (t) => {
-    setArrival(t)
+    setArrival(t.target.value)
+    console.log(arrival);
   }
 
   const handleDriver = () => {
@@ -52,7 +53,7 @@ export default function UserHome() {
 
       {!driverSelected && !passengerSelected ? <div className={styles.actionBox}>
         <h2 style={{margin:"32px"}}>Choose your arrival time.</h2>
-        <input className={styles.actionQuestion}
+        <input type={'time'} name={'appt'} className={styles.actionQuestion} required
               onInput={(newText) => {
                 handleArrival(newText)
               }}
