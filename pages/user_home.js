@@ -33,7 +33,9 @@ export default function UserHome() {
         <title>Start</title>
       </Head>
 
-      <div style={{ zIndex: "0" }}>
+      <div style={{ zIndex: "0", backgroundColor:"yellow" }}>
+
+        
         <iframe
           style={{ overflow: "hidden", height: "100vh", width: "100vw" }}
           loading="lazy"
@@ -44,7 +46,7 @@ export default function UserHome() {
 
 
       {!driverSelected && !passengerSelected ? <div className={styles.actionBox}>
-        <h2>Choose your role.</h2>
+        <h2 style={{margin:"32px"}}>Choose your role.</h2>
         <div className={styles.actionOption} style={{ backgroundColor: "#FFC154" }} onClick={handleDriver}><h3>Driver</h3></div>
         <div className={styles.actionOption} style={{ backgroundColor: "#FF9345" }} onClick={handlePassenger}><h3>Passenger</h3></div>
       </div> : <div className={styles.actionBox}>
