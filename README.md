@@ -2,6 +2,14 @@
 SmartPool
 
 ## Project Description
+SmartPool is a mobile-friendly web application that enables University of Calgary students to transit to work together! Our app ensures that only individuals from a certain organization can carpool together, this decreases the number of cars on the road heading to the same location, increases accessibility to transportation as well as lets you meet others from your university. Using Microsoft Azures authentication service only registered organizations are allowed to sign up to use the application. Additionally, each journey has its own unique journey id which will be shared with the passenger and driver, to ensure that the individuals on the app are the ones commuting together.
+
+The technologies we used for the Front-end: Next.js and for the Back-end: Node.js and Express.js.
+
+This application was created during the 24-hour Calgary-Hacks hackathon 
+
+
+
 
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
