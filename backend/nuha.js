@@ -15,30 +15,42 @@ addr.then(function(result)
 })
 
 
-tools.add_organization(679, 'nuhas uni', '2500 University Dr NW, Calgary, AB T2N 1N4');
-let calling_getorgaddr = function(org_id) {
-  return tools.get_org_addr(org_id).then(token => { return token } )
+tools.check_user_exists('john.doe@ucalgary.ca');
+let calling_check_user_exists = function(email) {
+  return tools.check_user_exists(email).then(token => { return token } )
 }
 
-let addre = calling_getorgaddr(679);
+let andres = calling_check_user_exists('john.doe@ucalgary.ca');
 
-addre.then(function(result) 
+andres.then(function(result) 
 {
-   console.log("This will work, positive affirmation for organization ID: ", result) // "Some User token"
+   console.log("This will work, positive affirmation CHECK EXISTENCE OF USER: ", result) // "Some User token"
 })
+
+// tools.add_organization(679, 'nuhas uni', '2500 University Dr NW, Calgary, AB T2N 1N4');
+// let calling_getorgaddr = function(org_id) {
+//   return tools.get_org_addr(org_id).then(token => { return token } )
+// }
+
+// let addre = calling_getorgaddr(679);
+
+// addre.then(function(result) 
+// {
+//    console.log("This will work, positive affirmation for organization ID: ", result) // "Some User token"
+// })
 
 // tools.add_journey_request_driver(30087631, 'passenger', 100,'February 20, 2022 9:00:00' );
 // tools.add_journey_request_passenger(30087631, 'driver', 'February 20, 2022 9:00:00');
-let calling_getjur = function(org_id) {
-  return tools.get_journey_requests().then(token => { return token } )
-}
+// let calling_getjur = function(org_id) {
+//   return tools.get_journey_requests().then(token => { return token } )
+// }
 
-let addres = calling_getjur();
+// let addres = calling_getjur();
 
-addres.then(function(result) 
-{
-   console.log("This will work, positive affirmation for JOURNEYS: ", result) // "Some User token"
-})
+// addres.then(function(result) 
+// {
+//    console.log("This will work, positive affirmation for JOURNEYS: ", result) // "Some User token"
+// })
 // var jur= tools.get_journey_requests();
 // console.log(jur[0]);
 // console.log('Instantiated an instance of the DB!');

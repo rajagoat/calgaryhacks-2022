@@ -74,7 +74,7 @@ add_user: function (first, last, pronouns, org_id, ucid, home_addr, email, phone
         const snapshot = await db.collection('users').get();
         snapshot.forEach((doc) => {
             //make sure ucid is unique
-            if(doc.ucid==data.ucid){
+            if(doc.data().ucid==data.ucid){
                 console.log("Duplicate UCID, please change ucid number to a unique number");
                 exists=1;
             }
@@ -87,25 +87,45 @@ add_user: function (first, last, pronouns, org_id, ucid, home_addr, email, phone
     })()
 },
 
+check_user_exists: function(email){
+    var exists=0;
+    (async function()
+    {
+        // Add a new document with a generated id.
+        const snapshot = await db.collection('users').get();
+        snapshot.forEach((doc) => {
+            //make sure ucid is unique
+            if(doc.data().email==email){
+                console.log("User already exists!");
+                exists=1;
+            }
+        });
+        if(exists==1){
+            return true; //returns true is user exists
+        }else{
+            return false; //false if does not
+        }
+    })()
+},
 
-// function delete_user(ucid)
-// { //pass the id of document -> id of specific user
-//     const citiesRef = db.collection('users');
-//     const snapshot = citiesRef.where('ucid', '==', ucid).get();
-//     if (snapshot.empty) 
-//     {
-//         console.log('No matching documents.');
-//         return;
-//     }  
+ delete_user: function (ucid)
+{ //pass the id of document -> id of specific user
+    const citiesRef = db.collection('users');
+    const snapshot = citiesRef.where('ucid', '==', ucid).get();
+    if (snapshot.empty) 
+    {
+        console.log('No matching documents.');
+        return;
+    }  
 
-//     //says 
-//     snapshot.forEach(doc => {
-//         console.log(doc.id, '=>', doc.data());
-//         (async function(){
-//             const res = await db.collection('users').doc(doc.id).delete();
-//         })()
-//     });
-// }
+    //says 
+    snapshot.forEach(doc => {
+        console.log(doc.id, '=>', doc.data());
+        (async function(){
+            const res = await db.collection('users').doc(doc.id).delete();
+        })()
+    });
+},
 
 get_user: async function(ucid)
 {

@@ -10,9 +10,10 @@ button.addEventListener("click", () => {
                 {id: 1, quantity: 1}
             ]
         })
-    }).then(res => {
+    }).then(async res => {
         if (res.ok) return res.json()
-        return res.json().then(json => Promise.reject(json))
+        const json = await res.json()
+        return await Promise.reject(json)
     }). then(({url}) => {
         window.location = url
         // console.log(url)
