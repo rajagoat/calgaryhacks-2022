@@ -9,8 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+<<<<<<< HEAD
+    "@google-cloud/firestore": "^5.0.2",
+=======
     "@azure/msal-browser": "^2.22.0",
     "@azure/msal-react": "^1.3.0",
+>>>>>>> ed42784c529113930a31335a2e4a7785240d228c
     "next": "12.1.0",
     "qrcode.react": "^1.0.1",
     "react": "17.0.2",
