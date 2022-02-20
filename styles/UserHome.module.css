@@ -1,14 +1,15 @@
 .actionBox{
   position: absolute;
   top: 50%;
-  margin-left: 160px;
-  height: 70vh;
+  margin-left: 400px;
+  height: 75vh;
   min-height: 400px;
-  width: 300px;
+  width: 450px;
   background-color: white;
   transform: translate(-50%,-50%);
   -ms-transform: translate(-50%,-50%);
-
+  font-size: 35px;
+  text-align: center;
   border-radius: 12px;
 
   display: flex;
@@ -18,16 +19,19 @@
 
 }
 
-.actionOption{
-    height: 30%;
-    width: 90%;
-    margin: 12px;
+.actionBox > h2 {
+  margin-bottom: 60px;
+}
 
+.actionOption{
+    height: 25%;
+    width: 80%;
+    margin: 12px;
     display: flex;
     flex-flow: column wrap;
     justify-content: center;
     align-items: center;
-
+    font-size: 30px;
     border-radius: 12px;
 
     color:white;
