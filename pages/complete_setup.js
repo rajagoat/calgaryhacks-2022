@@ -31,6 +31,16 @@ export default function CompleteSetup() {
           });
         }
       }, []);
+
+      const handleSubmit = (e) => {
+        e.preventDefault(); //prevents page refresh
+        let name = e.target[0].value;
+        let pronouns = e.target[1].value;
+        let pos = e.target[2].value;
+        let org = e.target[3].value;
+        // Use a backend function here to send the time and passenger value to the DB
+        
+      }
   return (
     <div>
       <Head>
@@ -49,6 +59,7 @@ export default function CompleteSetup() {
         <h2>Complete your profile setup</h2>
         <br/>
         <br/>
+
         <div className={styles.imageContainer}>
           <Image src={`https://ucarecdn.com/${file_src}`} placeholder='blur' 
           blurDataURL={`https://ucarecdn.com/3b3c67e9-b8c3-4e2f-9416-199a1137aa80/qrimage.png`} alt='profile-pic' layout="fill" objectFit='cover'/>
@@ -57,24 +68,17 @@ export default function CompleteSetup() {
         <div className={styles.imageUpload}>
           <input id="uploader" type="hidden" />
         </div>
-        
+        <form className={styles.center} onSubmit={handleSubmit}>
+          <div className='center'>
+            <input className={styles.blanks} placeholder="  Name" type="text" />
+            <input className={styles.blanks} placeholder="  Pronouns" type="text" />
+            <br/>
+            <span><input className={styles.blanks} placeholder="  Position" type="text" /> @ <input className={styles.blanks} placeholder="  Organization" type="text" /></span>
+            <br />
+            <input style={{color:"white", textDecoration:"none", fontSize:"12px"}} className={styles.getStarted} type="submit" value={'Submit'}/>
 
-        <br/>
-        <div className='center'>
-          <input className={styles.blanks} placeholder="  Name" type="text" />
-          <input className={styles.blanks} placeholder="  Pronouns" type="text" />
-
-          <br/>
-
-          <span><input className={styles.blanks} placeholder="  Position" type="text" /> @ <input className={styles.blanks} placeholder="  Organization" type="text" /></span>
-        </div>
-
-        <button className={styles.getStarted} type='button'>
-            <Link href={'/signup'}>
-              <a style={{color:"white", textDecoration:"none", fontSize:"12px"}}>Submit</a>
-            </Link>
-          </button>
-        
+          </div>
+        </form>
       </div>
     </div>
 
