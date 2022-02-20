@@ -202,7 +202,7 @@ async function algorithm() {
     carpoolTrip.cost_per_rider = total_distance * gas_cost / carpoolTrip.no_passengers;
     console.log("Cost per rider: " + carpoolTrip.cost_per_rider);
   } else{
-    console.log("Sorry.. No ride available. All drivers are too far away");
+    console.log("Sorry...No ride available. All drivers are too far away");
   }
 }
 
