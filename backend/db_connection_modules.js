@@ -219,7 +219,7 @@ get_org_addr: async function(org_id) {//*****user id should be set *******
         }
     }
     );
-    return add;
+    return add[0];
 },
 
 print_organizations: function (){
