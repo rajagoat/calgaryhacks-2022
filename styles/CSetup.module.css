@@ -1,0 +1,54 @@
+.profileCard{
+    width:100vw;
+    height: 80vh;
+    display:flex;
+    flex-flow:column nowrap;
+    justify-content:center;
+    align-items: center;
+}
+
+.imageContainer{
+    position: relative;
+    border-radius: 50%;
+    overflow: hidden;
+    min-width: 200px;
+    min-height: 200px;
+    max-width: 200px;
+    max-height: 200px;
+
+}
+
+.imageUpload{
+    padding: 32px;
+}
+
+.blanks {
+    width: 90vw;
+    max-width: 300px;
+    margin-bottom: 12px;
+
+    height: 30px;
+
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 6px;
+
+    transition: all .1s ease-in-out;
+}
+
+.getStarted{
+    border: none;
+    background-color: var(--button-primary);
+    border-radius: 6px;
+    margin-top: 12px;
+
+    padding: 12px 32px;
+
+    color: white;
+    transition: all .1s ease-in-out;
+
+}
+
+.getStarted:hover {
+    transform: translate(0, -2px);
+}

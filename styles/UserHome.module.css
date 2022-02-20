@@ -40,13 +40,65 @@
 }
 
 .actionQuestion {
-    height: 10%;
-    width: 80%;
+    height: 27px;
+    width: 90%;
 
     border-width: 1px;
     border-style: solid;
     border-radius: 6px;
 
     transition: all .1s ease-in-out;
+
+    margin-top: 12px;
+}
+
+.actionSelect {
+    height: 27px;
+    width: 90%;
+
+    transition: all .1s ease-in-out;
+
+    margin-top: 12px;
+}
+
+.profile{
+    background-color: white;
+    position: fixed;
+    right:30px;
+    top: 30px;
+    padding: 12px;
+    border-radius: 6px;
+}
+
+.profile > a {
+    text-decoration: none;
+    color: black;
+}
+
+.center{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.submit{
+    background-color: #FFC154;
+    padding: 12px;
+    width: 90%;
+    margin-top: 12px;
+    border-radius: 6px;
+    border: 0;
+    transition: all .1s ease-in-out;
+}
+
+.submit > a {
+    text-decoration: none;
+    color: black;
+}
+
+.submit:hover{
+    transform: translate(0, -2px);
 }
   

@@ -265,7 +265,7 @@ let home_addr = await calling_getuseraddr(30087631);
     console.log("Cost per rider: " + carpoolTrip.cost_per_rider);
     db.add_carpool_trip(carpoolTrip.travel_time, carpoolTrip.driver_id, carpoolTrip.departure_time, carpoolTrip.passenger_pickup_times, carpoolTrip.cost_per_rider,no_of_passenger, carpoolTrip.no_passengers, carpoolTrip.riders);
   } else{
-    console.log("Sorry.. No ride available. All drivers are too far away");
+    console.log("Sorry...No ride available. All drivers are too far away");
   }
 }
 
