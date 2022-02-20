@@ -85,8 +85,25 @@ function duration(address1, address2) { // returns the distance between two addr
   return axios(config)
   .then(function (response) {
     //console.log(JSON.stringify(response.data));
-    console.log("The distance is: " + response.data.rows[0].elements[0].duration.text);
+    console.log("The time from " + address1 + " to " + address2 + " is: " + response.data.rows[0].elements[0].duration.text);
     return response.data.rows[0].elements[0].duration.value/60;
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+}
+
+function distance(address1, address2) { // returns the distance between two addresses in km
+  var config = {
+    method: 'get',
+    url: 'https://maps.googleapis.com/maps/api/distancematrix/json?origins=' + address1 + '&destinations=' + address2 + '&key=AIzaSyAiT_67z4JJg_Vhc3KaPmOjyR9KktIN3HU',
+    headers: { }
+  };
+  return axios(config)
+  .then(function (response) {
+    //console.log(JSON.stringify(response.data));
+    console.log("The distance from " + address1 + " to " + address2 + " is: " + response.data.rows[0].elements[0].distance.text);
+    return response.data.rows[0].elements[0].distance.value/1000;
   })
   .catch(function (error) {
     console.log(error);
@@ -95,8 +112,7 @@ function duration(address1, address2) { // returns the distance between two addr
 
 async function algorithm() {
   var total_time = 0; // in minutes
-  var gas_cost = 0;
-  var destination = org1.org_addr;
+  var gas_cost = 11*1.39/100; // cost of gas per km (11L/100 km * $1.39/L)
   var driver_arrival_time = "";
   var driver;
   var vehicle_size;
@@ -151,33 +167,42 @@ async function algorithm() {
     }
   }
 
-  //carpoolTrip.riders.sort(async function(a, b){return await duration(a, driver.home_addr) - await duration(b, driver.home_addr)}); //sort in aseending order from closest to driver to furthest
+  carpoolTrip.riders.sort(async function(a, b){return await duration(a, driver.home_addr) - await duration(b, driver.home_addr)}); //sort in aseending order from closest to driver to furthest
   
+  var total_distance = 0; //in km
+
   for(var i = carpoolTrip.riders.length - 1; i >= 0 ; i--) { // for each rider, set pickup time
     console.log("Rider # " + carpoolTrip.riders.length);
     var time = 0;
     if(i == carpoolTrip.riders.length - 1 ) { //last ride
+      let destination = org1.org_addr;
       time = await duration(carpoolTrip.riders[i].home_addr, destination); //time from last rider to destination
-      console.log("Time to uni: " + time);
-      let arrival_time_1 = new Date(driver_arrival_time).getTime()/1000;
-      carpoolTrip.passeneger_pickup_times[i] = driver_arrival_time - time;
-    }else{
+      total_distance += await distance(carpoolTrip.riders[i].home_addr, destination); //distance from last rider to destination
+    } else{
       time = await duration(carpoolTrip.riders[i].home_addr,  carpoolTrip.riders[i+1].home_addr);
-      carpoolTrip.passeneger_pickup_times[i] = carpoolTrip.passeneger_pickup_times[i+1] - time;
+      total_distance += await distance(carpoolTrip.riders[i].home_addr,  carpoolTrip.riders[i+1].home_addr); //distance from last rider to destination
     }
+    let arrival_date = new Date(driver_arrival_time);
+    console.log("The arrival date is: " + arrival_date);
+    carpoolTrip.passeneger_pickup_times[i] = new Date(arrival_date.getTime() - time*60000); //set pickup time
     console.log("For rider " + carpoolTrip.riders[i].firstName + " " + carpoolTrip.riders[i].lastName + " the pickup time is: " + carpoolTrip.passeneger_pickup_times[i]);
     total_time += time;
   }
 
   if(carpoolTrip.no_passengers != 0) { // if there are no riders
     var time = await duration(driver.home_addr, carpoolTrip.riders[0].home_addr);
-    carpoolTrip.departure_time = carpoolTrip.passeneger_pickup_times[0] - time; //time from driver to first rider
+    total_distance += await distance(driver.home_addr, carpoolTrip.riders[0].home_addr);
+    carpoolTrip.departure_time = new Date(carpoolTrip.passeneger_pickup_times[0]  - time*60000); //time from driver to first rider
     total_time += time;
 
     carpoolTrip.travel_time = total_time;
-    carpoolTrip.cost_per_rider = carpoolTrip.travel_time * gas_cost / carpoolTrip.no_passengers;
+    console.log("The total trip in km is: " + total_distance);
+    console.log("The total trip is: " + carpoolTrip.travel_time);
+    console.log("Departure time for driver: " + carpoolTrip.departure_time);
+    carpoolTrip.cost_per_rider = total_distance * gas_cost / carpoolTrip.no_passengers;
+    console.log("Cost per rider: " + carpoolTrip.cost_per_rider);
   } else{
-    console.log("Sorry.. No ride available. All drivers are too far away");
+    console.log("Sorry...No ride available. All drivers are too far away");
   }
 }
 
