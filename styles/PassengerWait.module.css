@@ -1,0 +1,20 @@
+.title{
+    padding: 12px;
+}
+
+.center{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.imageContainer{
+    position: relative;
+    border-radius: 50%;
+    overflow: hidden;
+    width: 150px;
+    max-width: 250px;
+    height: 150px;
+    max-height: 250px;
+}

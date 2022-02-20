@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image'
 import styles from '../styles/UserHome.module.css'
 import Navbar from '../components/Navbar';
+import PassengerWait from "../components/PassengerWait";
 
 export default function UserHome() {
 
@@ -27,9 +28,13 @@ export default function UserHome() {
 
 
       <div className={styles.actionBox}>
-        <div className={styles.actionOption} style={{backgroundColor:"#FFC154"}}><h3>Driver</h3></div>
-        <div className={styles.actionOption} style={{backgroundColor:"#FF9345"}}><h3>Passenger</h3></div>
+        {/* <div className={styles.actionOption} style={{backgroundColor:"#FFC154"}}><h3>Driver</h3></div>
+        <div className={styles.actionOption} style={{backgroundColor:"#FF9345"}}><h3>Passenger</h3></div> */}
+
+        <PassengerWait />
       </div>
+
+
     </div>
   )
 }
