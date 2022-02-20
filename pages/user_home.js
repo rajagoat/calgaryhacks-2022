@@ -42,9 +42,9 @@ export default function UserHome() {
       <div style={{ zIndex: "0", backgroundColor:"grey" }}>
 
         <div className={styles.profile}>
-          <a href="/user_home">
+          <a href="/profile">
             <b>
-            Go back
+            View Profile
             </b>
           </a>
         </div>
