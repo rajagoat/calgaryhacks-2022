@@ -5,6 +5,7 @@ import styles from '../styles/UserHome.module.css'
 import { useState } from 'react';
 import Looking from '../components/Looking';
 import dynamic from 'next/dynamic';
+import RideComplete from '../components/RideComplete';
 
 const PassengerWait = dynamic(() => import('../components/PassengerWait'));
 
@@ -60,6 +61,7 @@ export default function UserHome() {
 
       {!driverSelected && !passengerSelected ? <div className={styles.actionBox}>
         <form className={styles.center} onSubmit={handleSubmit}>
+          <RideComplete/>
           <h3>Choose your arrival time:</h3>
           <input className={styles.actionQuestion} type="time" id='appt' name='appt' required/>
 
