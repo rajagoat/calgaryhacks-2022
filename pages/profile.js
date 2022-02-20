@@ -34,11 +34,9 @@ export default function Profile() {
   //     return () => window.removeEventListener("resize", handleResize);
   //   }
   // }, []); // Empty array ensures that effect is only run on mount
+  var file_src = "d0cfd8a6-ae78-42c3-97d0-ad3f1b49174b/noel.png";
 
   return (
-
-
-    
     <div>
       <Head>
         <title>Profile</title>
@@ -48,7 +46,8 @@ export default function Profile() {
 
       <div className={styles.profileCard} >
         <div className={styles.imageContainer}>
-          <Image src={'https://ucarecdn.com/d0cfd8a6-ae78-42c3-97d0-ad3f1b49174b/noel.png'} alt='profile-pic' layout="fill" objectFit='cover'/>
+          <Image src={`https://ucarecdn.com/${file_src}`} placeholder='blur' 
+          blurDataURL={`https://ucarecdn.com/3b3c67e9-b8c3-4e2f-9416-199a1137aa80/qrimage.png`} alt='profile-pic' layout="fill" objectFit='cover'/>
         </div>
         <br/>
         <div className='center'>
