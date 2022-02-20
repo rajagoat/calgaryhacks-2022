@@ -21,8 +21,9 @@ export default function UserHome() {
   const [arrival, setArrival] = useState("")
 
   const dest = "university+of+calgary"
+  const waypoints = "Telus+Spark"
   const src = "calgary"
-  const mapUrl = `https://www.google.com/maps/embed/v1/directions?key=AIzaSyBnVKDuctU6vqxXII877bb_k-rEeF4DlvE&origin=${src}&destination=${dest}&avoid=tolls|highways&zoom=12`
+  const mapUrl = `https://www.google.com/maps/embed/v1/directions?key=AIzaSyBnVKDuctU6vqxXII877bb_k-rEeF4DlvE&origin=${src}&destination=${dest}&avoid=tolls|highways&zoom=12&${waypoints}`
 
   const handleSubmit = (e) => {
     e.preventDefault(); //prevents page refresh
@@ -37,7 +38,7 @@ export default function UserHome() {
       setPassengerSelected(true);
     }
     // Use a backend function here to send the time and passenger value to the DB
-    
+
   }
 
   return (
