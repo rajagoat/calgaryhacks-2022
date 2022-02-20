@@ -11,10 +11,11 @@
     position: relative;
     border-radius: 50%;
     overflow: hidden;
-    width: 30vw;
-    max-width: 250px;
-    height: 30vw;
-    max-height: 250px;
+    min-width: 200px;
+    min-height: 200px;
+    max-width: 200px;
+    max-height: 200px;
+
 }
 
 .imageUpload{
@@ -33,4 +34,21 @@
     border-radius: 6px;
 
     transition: all .1s ease-in-out;
+}
+
+.getStarted{
+    border: none;
+    background-color: var(--button-primary);
+    border-radius: 6px;
+    margin-top: 12px;
+
+    padding: 12px 32px;
+
+    color: white;
+    transition: all .1s ease-in-out;
+
+}
+
+.getStarted:hover {
+    transform: translate(0, -2px);
 }

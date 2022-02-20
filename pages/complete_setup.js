@@ -66,8 +66,14 @@ export default function CompleteSetup() {
 
           <br/>
 
-          <span><input className={styles.blanks} placeholder="  Position" type="text" /> @ <input className={styles.blanks} placeholder="  Organnization" type="text" /></span>
+          <span><input className={styles.blanks} placeholder="  Position" type="text" /> @ <input className={styles.blanks} placeholder="  Organization" type="text" /></span>
         </div>
+
+        <button className={styles.getStarted} type='button'>
+            <Link href={'/signup'}>
+              <a style={{color:"white", textDecoration:"none", fontSize:"12px"}}>Submit</a>
+            </Link>
+          </button>
         
       </div>
     </div>
