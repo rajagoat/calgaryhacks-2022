@@ -131,7 +131,13 @@ const carpoolTrip = {
 
 var axios = require('axios');
 
-algorithm();
+demo();
+async function demo(){
+  while(1){
+    algorithm();
+    await new Promise(r => setTimeout(r, 2000));
+  }
+}
 
 function duration(address1, address2) { // returns the distance between two addresses in minutes
   var config = {

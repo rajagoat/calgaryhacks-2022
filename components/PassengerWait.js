@@ -7,7 +7,7 @@ const PassengerWait = () => {
     const driverImage = "https://ucarecdn.com/d0cfd8a6-ae78-42c3-97d0-ad3f1b49174b/noel.png";
     const driverPronouns = "He/Him";
 
-
+    var db = require('./db_connection_modules.js');
     return (
         <div className={styles.center}>
             <h3 className={styles.title}>Your ride is on its way!</h3>
