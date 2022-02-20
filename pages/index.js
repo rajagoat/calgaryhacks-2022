@@ -3,8 +3,9 @@ import Link from 'next/link';
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Navbar from '../components/Navbar';
-import { useMsal } from "@azure/msal-react";
+import { useMsal, useIsAuthenticated } from "@azure/msal-react";
 import { loginRequest } from "../src/authConfig";
+import { useRouter } from 'next/router';
 
 function handleLogin(instance) {
     instance.loginRedirect(loginRequest).catch(e => {
@@ -14,6 +15,10 @@ function handleLogin(instance) {
 
 export default function Home() {
   const { instance } = useMsal();
+  const isAuthenticated = useIsAuthenticated();
+  const router = useRouter()
+
+  if (isAuthenticated) router.push('/complete_setup');
 
   return (
     <div>
