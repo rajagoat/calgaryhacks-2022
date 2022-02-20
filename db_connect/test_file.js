@@ -56,7 +56,7 @@ function add_user(first, last, pronouns, org_id, home_addr, email, phone_num, pa
         last: last,
         pronouns: pronouns,
         org_id: org_id,
-        ucid: ucid, //make sure this is unique
+        ucid: ucid, 
         home_addr: home_addr,
         email: email,
         phone_num:phone_num,
@@ -66,8 +66,10 @@ function add_user(first, last, pronouns, org_id, home_addr, email, phone_num, pa
         // Add a new document with a generated id.
         const snapshot = await db.collection('users').get();
         snapshot.forEach((doc) => {
+            //make sure ucid is unique
             if(doc.ucid==data.ucid){
                 console.log("Duplicate UCID, please change ucid number to a unique number");
+                return;
             }
         });
         const res = await db.collection('users').add(data);
@@ -76,10 +78,10 @@ function add_user(first, last, pronouns, org_id, home_addr, email, phone_num, pa
 }
 
 
-function delete_user(user_id)
+function delete_user(ucid)
 { //pass the id of document -> id of specific user
     (async function(){
-        const res = await db.collection('users').doc(user_id).delete();
+        const res = await db.collection('users').doc(ucid).delete();
     })()
 }
 
