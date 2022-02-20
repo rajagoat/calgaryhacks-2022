@@ -69,17 +69,6 @@ export default function UserHome() {
           <label htmlFor="passenger">Passenger</label>
           <input type="submit" value={'Submit'}/>
         </form>
-        {/* <h2 style={{margin:"32px"}}>Choose your arrival time.</h2>
-        <input type={'time'} name={'appt'} className={styles.actionQuestion} required
-              onChange={(newText) => {
-                handleArrival(newText)
-              }}
-            />
-          
-        <h2 style={{margin:"32px"}}>And choose your role.</h2>
-        <div className={styles.actionOption} style={{ backgroundColor: "#FFC154" }} onClick={handleDriver}><h3>Driver</h3></div>
-        <div className={styles.actionOption} style={{ backgroundColor: "#FF9345" }} onClick={handlePassenger}><h3>Passenger</h3></div> */}
-
       </div> : <div className={styles.actionBox}>
         {driverSelected && passengerWaiting ? <Looking userInfo={'passengers'}/> : <Looking userInfo={'a driver'}/>}
       </div>}
