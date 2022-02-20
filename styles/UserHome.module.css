@@ -1,0 +1,41 @@
+.actionBox{
+  position: absolute;
+  top: 50%;
+  margin-left: 180px;
+  height: 70vh;
+  min-height: 400px;
+  width: 300px;
+  background-color: white;
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+
+  border-radius: 12px;
+
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.actionOption{
+    height: 15%;
+    width: 90%;
+    margin: 12px;
+
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 12px;
+
+    color:white;
+
+    transition: all .1s ease-in-out;
+}
+
+.actionOption:hover {
+    transform: translate(0, -2px);
+  }
+  
