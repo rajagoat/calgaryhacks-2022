@@ -16,7 +16,7 @@ export default function UserHome() {
 
   const dest = "university+of+calgary"
   const src = "calgary"
-  const mapUrl = `https://www.google.com/maps/embed/v1/directions?key=AIzaSyBnVKDuctU6vqxXII877bb_k-rEeF4DlvE&origin=${src}&destination=${dest}&avoid=tolls|highways`
+  const mapUrl = `https://www.google.com/maps/embed/v1/directions?key=AIzaSyBnVKDuctU6vqxXII877bb_k-rEeF4DlvE&origin=${src}&destination=${dest}&avoid=tolls|highways&zoom=12`
 
   const handleDriver = () => {
     setDriverSelected(true);
