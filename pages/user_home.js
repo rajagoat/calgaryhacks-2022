@@ -44,7 +44,7 @@ export default function UserHome() {
         <iframe
           style={{ overflow: "hidden", height: "100vh", width: "100vw" }}
           loading="lazy"
-          allowfullscreen
+          allowFullScreen
           src={mapUrl} >
         </iframe>
       </div>
