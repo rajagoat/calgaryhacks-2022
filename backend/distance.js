@@ -94,8 +94,16 @@ function set_up(){
   db.add_journey_request_passenger(123456, 'Passenger', 'February 20, 2022 9:01:00');
 }
 
-let calling_getuseraddr = function(ucid) {
+let calling_get_user_addr = function(ucid) {
   return db.get_user_addr(ucid).then(token => { return token } )
+}
+
+let calling_delete_journey_request = function(ucid) {
+  return db.delete_journey_request(ucid).then(token => { return token } )
+}
+
+let calling_get_user = function(ucid) {
+  return db.get_user(ucid).then(token => { return token } )
 }
 
 let calling_getorgaddr = function(org_id) {
@@ -160,26 +168,14 @@ function distance(address1, address2) { // returns the distance between two addr
 }
 
 async function algorithm() {
-
   var total_time = 0; // in minutes
   var gas_cost = 11*1.39/100; // cost of gas per km (11L/100 km * $1.39/L)
   var driver_arrival_time = "";
   var driver;
   var vehicle_size;
-  var org_id;
-
-  /*
-let home_addr = await calling_getuseraddr(30087631);
-    console.log("Home address with ucid of 30087631: ", result);
-
-
-    let org_addr = await calling_getorgaddr(1);
-
-    console.log("Organization address for org_id = 1: ", result);
- */
 
   var journey_requests = await calling_get_journeys();
-  console.log("All journeys: ", journey_requests);
+  //console.log("All journeys: ", journey_requests);
 
   for(var i = 0; i < journey_requests.length; i++) { // for each journery request
     if(journey_requests[i].user_type == "Driver") { // if the user is a driver
@@ -195,21 +191,20 @@ let home_addr = await calling_getuseraddr(30087631);
     if(carpoolTrip.driver_id != 0) { // if the driver has been assigned
       driver = await calling_get_user(carpoolTrip.driver_id);
       if( journey_requests[i].user_type == "Passenger") { // if the user is a rider
-        org_id = driver.org_id; //set driver org id
-        console.log("The driver is: " + driver.firstName);
+        console.log("Checking this rider " + journey_requests[i].ucid);
+        console.log("where the driver is: " + driver.first + " " + driver.last);  // print the driver's name
         let arrival_time_1 = new Date(driver_arrival_time).getTime()/1000; // convert ms to seconds
         let arrival_time_2 = new Date(journey_requests[i].arrival_time).getTime()/1000;
         let time_difference = Math.abs(arrival_time_2 - arrival_time_1);
         console.log("The arrival times are: " + time_difference/60 + " minutes apart");
         if(time_difference <= 600) { //arriving within 10 minutes (600 seconds)
-          let user = await calling_get_user(journey_requests[i].ucid);
-          let user_addr = await calling_getuseraddr(journey_requests[i].ucid); // for each user (find the address for the user is the same as the user we are looking at)
+          let user = await calling_get_user(journey_requests[i].ucid); // for each user (find the address for the user is the same as the user we are looking at)
           var time_from_driver_to_user = await duration(user.home_addr, driver.home_addr);
           if(time_from_driver_to_user < 5){ // 5 minutes
             if(carpoolTrip.no_passengers < vehicle_size) { // if there is room for the rider
               carpoolTrip.no_passengers++;
-              carpoolTrip.riders.push(user); //add the passenger to the carpool
-              console.log("The rider being added is: " + user.firstName + " " + user.lastName);
+              carpoolTrip.riders.push(user.ucid); //add the passenger to the carpool
+              console.log("The rider being added is: " + user.first + " " + user.last);
             } else{
               console.log("Sorry.. no more space available for this trip");
               //go back and look for new driver?
@@ -217,11 +212,9 @@ let home_addr = await calling_getuseraddr(30087631);
             }
           } else {
             console.log("Sorry.. no drivers in your area are available");
-            break;
           }   
         } else {
-          console.log("Sorry.. no drivers leaving within 10 minutes of your arrival time");
-          break;
+          console.log("Sorry.. no drivers leaving within 10 minutes of your arrival time for: " + journey_requests[i].ucid);
         } 
       }
     } else{
@@ -234,26 +227,30 @@ let home_addr = await calling_getuseraddr(30087631);
   var total_distance = 0; //in km
 
   for(var i = carpoolTrip.riders.length - 1; i >= 0 ; i--) { // for each rider, set pickup time
-    console.log("Rider # " + carpoolTrip.riders.length);
+    console.log("Rider # " + carpoolTrip.riders[i]);
     var time = 0;
+    let rider_addr = await calling_get_user_addr(carpoolTrip.riders[i]);
     if(i == carpoolTrip.riders.length - 1 ) { //last ride
-      let destination = org_address;
-      time = await duration(carpoolTrip.riders[i].home_addr, destination); //time from last rider to destination
-      total_distance += await distance(carpoolTrip.riders[i].home_addr, destination); //distance from last rider to destination
+      let destination = await calling_getorgaddr(driver.org_id);
+      console.log("The destination for the organization is: " + destination);
+      time = await duration(rider_addr, destination); //time from last rider to destination
+      total_distance += await distance(rider_addr, destination); //distance from last rider to destination
     } else{
-      time = await duration(carpoolTrip.riders[i].home_addr,  carpoolTrip.riders[i+1].home_addr);
-      total_distance += await distance(carpoolTrip.riders[i].home_addr,  carpoolTrip.riders[i+1].home_addr); //distance from last rider to destination
+      let next_rider_addr = await calling_get_user_addr(carpoolTrip.riders[i+1])
+      time = await duration(rider_addr,  next_rider_addr);
+      total_distance += await distance(rider_addr, next_rider_addr); //distance from last rider to destination
     }
     let arrival_date = new Date(driver_arrival_time);
     console.log("The arrival date is: " + arrival_date);
     carpoolTrip.passeneger_pickup_times[i] = new Date(arrival_date.getTime() - time*60000); //set pickup time
-    console.log("For rider " + carpoolTrip.riders[i].firstName + " " + carpoolTrip.riders[i].lastName + " the pickup time is: " + carpoolTrip.passeneger_pickup_times[i]);
+    console.log("For rider " + carpoolTrip.riders[i] + " the pickup time is: " + carpoolTrip.passeneger_pickup_times[i]);
     total_time += time;
   }
 
   if(carpoolTrip.no_passengers != 0) { // if there are no riders
-    var time = await duration(driver.home_addr, carpoolTrip.riders[0].home_addr);
-    total_distance += await distance(driver.home_addr, carpoolTrip.riders[0].home_addr);
+    let rider_addr = await calling_get_user_addr(carpoolTrip.riders[0]);
+    var time = await duration(driver.home_addr, rider_addr);
+    total_distance += await distance(driver.home_addr, rider_addr);
     carpoolTrip.departure_time = new Date(carpoolTrip.passeneger_pickup_times[0]  - time*60000); //time from driver to first rider
     total_time += time;
 
@@ -263,7 +260,13 @@ let home_addr = await calling_getuseraddr(30087631);
     console.log("Departure time for driver: " + carpoolTrip.departure_time);
     carpoolTrip.cost_per_rider = total_distance * gas_cost / carpoolTrip.no_passengers;
     console.log("Cost per rider: " + carpoolTrip.cost_per_rider);
-    db.add_carpool_trip(carpoolTrip.travel_time, carpoolTrip.driver_id, carpoolTrip.departure_time, carpoolTrip.passenger_pickup_times, carpoolTrip.cost_per_rider,no_of_passenger, carpoolTrip.no_passengers, carpoolTrip.riders);
+    console.log(carpoolTrip)
+    db.add_carpool_trip(carpoolTrip.travel_time, carpoolTrip.driver_id, carpoolTrip.departure_time, carpoolTrip.passeneger_pickup_times, carpoolTrip.cost_per_rider, carpoolTrip.no_passengers, carpoolTrip.riders);
+    //delete all journey requests fulfilled
+    db.calling_delete_journey_request(carpoolTrip.driver_id);
+    for(var l = carpoolTrip.riders.length; l < 0 ; l++) {
+      db.calling_delete_journey_request(carpoolTrip.riders[l]); 
+    }
   } else{
     console.log("Sorry...No ride available. All drivers are too far away");
   }
