@@ -263,9 +263,9 @@ async function algorithm() {
     console.log(carpoolTrip)
     db.add_carpool_trip(carpoolTrip.travel_time, carpoolTrip.driver_id, carpoolTrip.departure_time, carpoolTrip.passeneger_pickup_times, carpoolTrip.cost_per_rider, carpoolTrip.no_passengers, carpoolTrip.riders);
     //delete all journey requests fulfilled
-    db.calling_delete_journey_request(carpoolTrip.driver_id);
+    await calling_delete_journey_request(carpoolTrip.driver_id);
     for(var l = carpoolTrip.riders.length; l < 0 ; l++) {
-      db.calling_delete_journey_request(carpoolTrip.riders[l]); 
+      await calling_delete_journey_request(carpoolTrip.riders[l]); 
     }
   } else{
     console.log("Sorry...No ride available. All drivers are too far away");
